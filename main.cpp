@@ -66,11 +66,11 @@ void SvcInstall() {
 #include <fstream>
 #include <cstdlib>
 void SvcInstall() {
-    std::ofstream ofs("/etc/systemd/system/SVCNAME");
+    std::ofstream ofs("/usr/lib/systemd/user/SvcName");
     ofs << "[Unit]" << std::endl
         << "After=network.target" << std::endl
         << "[Service]" << std::endl
-        << "ExecStart=/usr/sbin/SVCNAME" << std::endl
+        << "ExecStart=/usr/sbin/SvcName" << std::endl
         << "ExecReload=/bin/kill -HUP $MAINPID" << std::endl
         << "Type=simple" << std::endl
         << "KillMode=control-group" << std::endl
@@ -78,7 +78,7 @@ void SvcInstall() {
         << "WantedBy=multi-user.target" << std::endl;
     ofs.close();
     system("systemctl daemon-reload");
-    system("systemctl enable SVCNAME");
+    system("systemctl enable SvcName");
 }
 
 #endif
