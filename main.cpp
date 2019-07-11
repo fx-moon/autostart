@@ -66,7 +66,7 @@ void SvcInstall() {
 #include <fstream>
 #include <cstdlib>
 void SvcInstall() {
-    std::ofstream ofs("/user/lib/systemd/system/SVCNAME");
+    std::ofstream ofs("/etc/systemd/system/SVCNAME");
     ofs << "[Unit]" << std::endl
         << "After=network.target" << std::endl
         << "[Service]" << std::endl
