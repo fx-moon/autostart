@@ -77,7 +77,7 @@ void SvcInstall() {
         << "[Install]" << std::endl
         << "WantedBy=multi-user.target" << std::endl;
     ofs.close();
-    system("chmod 754 /lib/systemd/system/SvcName.service")
+    system("chmod 754 /lib/systemd/system/SvcName.service");
     system("systemctl daemon-reload");
     system("systemctl enable SvcName.service");
 }
