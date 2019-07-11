@@ -66,7 +66,7 @@ void SvcInstall() {
 #include <fstream>
 #include <cstdlib>
 void SvcInstall() {
-    std::ofstream ofs("/usr/lib/systemd/user/SvcName.service");
+    std::ofstream ofs("/lib/systemd/system/SvcName.service");
     ofs << "[Unit]" << std::endl
         << "After=network.target" << std::endl
         << "[Service]" << std::endl
@@ -77,8 +77,9 @@ void SvcInstall() {
         << "[Install]" << std::endl
         << "WantedBy=multi-user.target" << std::endl;
     ofs.close();
+    system("chmod 754 /lib/systemd/system/SvcName.service")
     system("systemctl daemon-reload");
-    system("systemctl enable SvcName");
+    system("systemctl enable SvcName.service");
 }
 
 #endif
